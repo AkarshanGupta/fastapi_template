@@ -3,7 +3,8 @@ Application settings with feature flags using Pydantic BaseSettings.
 All optional features are controlled via environment variables.
 """
 from typing import List, Optional
-from pydantic import BaseSettings, validator
+from pydantic_settings import BaseSettings
+from pydantic import validator
 
 
 class Settings(BaseSettings):

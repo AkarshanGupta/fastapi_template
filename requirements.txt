@@ -1,32 +1,32 @@
 # FastAPI core dependencies
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==2.5.0
-pydantic-settings==2.1.0
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
 
 # Testing
-pytest==7.4.3
-pytest-asyncio==0.21.1
-httpx==0.25.2
+pytest
+pytest-asyncio
+httpx
+
+python-multipart
 
 # Optional: Database drivers (uncomment as needed)
-# asyncpg==0.29.0  # PostgreSQL async driver
-# psycopg2-binary==2.9.9  # PostgreSQL sync driver
-# motor==3.3.2  # MongoDB async driver
-# pymongo==4.6.0  # MongoDB sync driver
-# sqlalchemy==2.0.23  # SQL ORM
+# asyncpg  # PostgreSQL async driver
+# psycopg2-binary  # PostgreSQL sync driver
+# motor  # MongoDB async driver
+# pymongo  # MongoDB sync driver
+# sqlalchemy  # SQL ORM
 
 # Optional: OCR libraries (uncomment as needed)
-# pytesseract==0.3.10  # Tesseract OCR
-# Pillow==10.1.0  # Image processing
-# google-cloud-vision==3.4.5  # Google Vision API
-# boto3==1.29.7  # AWS Textract
+# pytesseract  # Tesseract OCR
+# Pillow  # Image processing
+# google-cloud-vision  # Google Vision API
+# boto3  # AWS Textract
 
 # Optional: Storage libraries (uncomment as needed)
-# boto3==1.29.7  # AWS S3
-# google-cloud-storage==2.14.0  # Google Cloud Storage
+# boto3  # AWS S3
+# google-cloud-storage  # Google Cloud Storage
 
 # Development tools
-python-dotenv==1.0.0
-
-
+python-dotenv
