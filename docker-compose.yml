@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # FastAPI application
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_template
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=True
+      - ENABLE_DB_POSTGRES=${ENABLE_DB_POSTGRES:-False}
+      - ENABLE_DB_MONGO=${ENABLE_DB_MONGO:-False}
+      - ENABLE_OCR=${ENABLE_OCR:-False}
+      - ENABLE_STORAGE=${ENABLE_STORAGE:-False}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fastapi_db
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_DB=fastapi_db
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app/app
+      - ./storage:/app/storage
+    depends_on:
+      - postgres
+      - mongo
+    networks:
+      - fastapi_network
+    restart: unless-stopped
+
+  # PostgreSQL database (optional - only used if ENABLE_DB_POSTGRES=True)
+  postgres:
+    image: postgres:15-alpine
+    container_name: fastapi_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fastapi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fastapi_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB database (optional - only used if ENABLE_DB_MONGO=True)
+  mongo:
+    image: mongo:7
+    container_name: fastapi_mongo
+    environment:
+      - MONGO_INITDB_DATABASE=fastapi_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - fastapi_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  mongo_data:
+
+networks:
+  fastapi_network:
+    driver: bridge
+
