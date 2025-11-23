@@ -162,3 +162,4 @@ async def delete_item(
     
     del _items_storage[item_id]
 
+

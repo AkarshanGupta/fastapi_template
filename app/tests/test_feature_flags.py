@@ -49,3 +49,4 @@ def test_items_endpoint_always_available(test_client: TestClient):
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 
+

@@ -62,3 +62,4 @@ def test_cors_actual_request(test_client: TestClient):
     # CORS headers should be present in actual requests too
     assert "access-control-allow-origin" in response.headers
 
+

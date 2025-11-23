@@ -37,3 +37,4 @@ def get_request_settings(request: Request) -> Settings:
 # Common dependency patterns
 SettingsDep = Depends(get_settings)
 
+

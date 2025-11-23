@@ -80,3 +80,4 @@ async def get_mongo_db():
         raise RuntimeError("MongoDB connection not initialized")
     return _mongo_db
 
+

@@ -45,3 +45,4 @@ def setup_logging(settings: Optional[Settings] = None) -> None:
     logger = logging.getLogger(__name__)
     logger.info(f"Logging configured with level: {settings.LOG_LEVEL}")
 
+

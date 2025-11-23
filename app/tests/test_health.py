@@ -40,3 +40,4 @@ def test_health_endpoint_structure(test_client: TestClient):
     for field in required_fields:
         assert field in data, f"Missing field: {field}"
 
+

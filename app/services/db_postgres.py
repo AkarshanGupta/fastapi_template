@@ -72,3 +72,4 @@ async def get_postgres_pool():
         raise RuntimeError("PostgreSQL connection not initialized")
     return _postgres_pool
 
+

@@ -60,3 +60,4 @@ def test_client_with_ocr(test_settings: Settings) -> Generator[TestClient, None,
     with TestClient(app) as client:
         yield client
 
+

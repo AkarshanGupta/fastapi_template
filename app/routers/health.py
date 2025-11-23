@@ -32,3 +32,4 @@ async def health_check() -> Dict[str, Any]:
         "environment": settings.ENVIRONMENT,
     }
 
+

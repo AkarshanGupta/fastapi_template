@@ -120,3 +120,4 @@ async def _process_aws_textract(image_data: bytes, settings: Settings) -> Dict[s
         "provider": "aws_textract"
     }
 
+

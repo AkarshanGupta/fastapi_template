@@ -86,3 +86,4 @@ async def ocr_status(settings: Settings = Depends(get_settings)) -> Dict[str, An
         "status": "ready"
     }
 
+
